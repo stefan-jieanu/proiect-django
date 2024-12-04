@@ -1,0 +1,34 @@
+- pentru a incarca toate fisierele statice (css, js) in interirul paginii
+{% load static %}
+
+- pentru a afisa o variabila
+{{ nume_variabila }}
+
+- if
+{% if conditie %}
+{% elif conditie2 %}
+{% else %}
+{% endif %}
+
+- pentru a itera o lista
+{% for element in my_list %}
+    {{ element }}
+{% endfor %}
+
+- pentru a adauga comentarii
+{% comment %}
+{% endcomment %}
+
+- pentru a adauga un singur fisier static pe pagina in attrbitul href="" am scrie
+{% static 'nume_fisier.css' %}
+
+- pentru a declara un block de content sau a folosi un block de content in interiorul paginii
+{% block content %}
+{% endblock %}
+
+- pentru a extinde o pagina de baza
+{% extends 'nume_fisier.html' %}
+
+- pentru a introduce un url in attributul href dintr-un tag <a href="" ></a>
+- 'nume_pagina' va fi un nume definit in urls.py pentru un anumit path
+<a href="{% url 'nume_pagina' %}">Link</a>

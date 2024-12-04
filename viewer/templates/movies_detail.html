@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Titlu: {{ movie.title }}</h1>
+    <p>Descriere: {{ movie.description }}</p>
+    <p>Gen: {{ movie.genre.name }}</p>
+    <p>Lansat in: {{ movie.released }}</p>
+    <p>Adaugat pe site in: {{ movie.created }} </p>
+{% endblock %}

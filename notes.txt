@@ -1,0 +1,59 @@
+Django is a python framework for backend development.
+
+Structura cu care lucreaza Django este MTV (MVC):
+-Model - data from database
+-Template (View) - data presentation
+-View (Controller) - business logic
+
+Features of Django:
+-Object Relational Mapping (ORM)
+-Template language
+-Database migrations
+-Authentication and authorisation
+-Other
+
+Overview IP:
+0-255
+153.178.200.1
+
+port: :8000
+adresa site django: 127.0.0.1:8000
+
+Useful commands:
+- to install django
+pip install django==4.2
+
+- to create django project
+django-admin startproject hollymovies .
+
+- to run the project
+python manage.py runserver
+
+- to stop project
+Ctrc+C
+
+- to create an app
+python manage.py startapp viewer
+
+- to create migrations
+- run this command every time after modifying a model in models.py
+python manage.py makemigrations
+
+- to apply migrations
+- run this command every time after running 'python manage.py makemigrations'
+python manage.py migrate
+
+- to open a shell (terminal interface) for quick working with models
+python manage.py shell
+
+- to create a super user
+- a super user has access to the admin page and can modify any data on the site (create, update, delete)
+python manage.py createsuperuser
+
+- to export all data from our SQL database to a text file as .json format
+- viewer este numele aplicatiei de unde vrem sa exportam modelele
+- parametrul --output ne indica numele fisierului in care vrem sa exportam datele
+python manage.py dumpdata viewer --output fixtures.json
+
+- to import data from a .json file
+python manage.py loaddata fixtures.json

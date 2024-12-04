@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 style="color: green;">Home Page</h1>
+    <p>My movie site!</p>
+
+    <!-- Pentru a comenta sintaxa folosita in templaturi pentru Django -->
+    <!-- Avem nevoie de cele doua tag-urile {% comment %} {% endcomment %}  -->
+    {% comment %}
+    <!--  Daca vrem sa afisam valoarea unei variabile folosim {{ }}  -->
+    {% endcomment %}
+    <h2>Prima variabila: {{ example_var }} </h2>
+    <h2>Favourite food: </h2>
+
+    {% comment %}
+    <!-- Pentru 'for' sau 'if' o sa folosim {%  %} -->
+    <!-- Fiecare 'for' sau 'if' trebuie sa fie inchis la final cu un:  -->
+    <!-- {% endfor %} pentru 'for'  -->
+    <!-- {% endif %} pentru 'if'   -->
+    {% endcomment %}
+
+    {% for f in food %}
+        <p>Item: {{ f }} </p>
+    {% endfor %}
+
+    {% if user != '' %}
+        <h3>Buna ziua, {{ user }} </h3>
+    {% else %}
+        <h3>Utilizator necunoscut</h3>
+    {% endif %}
+{% endblock %}
