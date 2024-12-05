@@ -1,11 +1,24 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <h3>Genurile de filme</h3>
+    <div class="row mb-4">
+        {% for genre in genres %}
+            <div class="col">
+                <a href="{% url 'movies-genre' genre.name %}"> {{ genre.name }} </a>
+            </div>
+        {% endfor %}
+    </div>
+
     <h1>My movie list:</h1>
     <ul>
       {% for movie in movies %}
           <li>
-              {{ movie.title }}, {{ movie.released }} -- {{ movie.genre.name }}
+                {% comment %}
+                <!-- Sintaxa {% url %} folosita in template-uri de django va inlocui automat linkul cu numele path-ului -->
+                <!-- Numele fiind definit in urls.py -->
+                {% endcomment %}
+                <a href="{% url 'movies-detail' movie.title %}"> {{ movie.title }}, {{ movie.released }} -- {{ movie.genre.name }} </a>
           </li>
       {% endfor %}
     </ul>

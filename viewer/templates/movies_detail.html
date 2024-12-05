@@ -6,4 +6,13 @@
     <p>Gen: {{ movie.genre.name }}</p>
     <p>Lansat in: {{ movie.released }}</p>
     <p>Adaugat pe site in: {{ movie.created }} </p>
+
+    <h2>Filme recomandate</h2>
+    <ul>
+        {% for movie in recommended_movies %}
+            <li>
+                <a href="{% url 'movies-detail' movie.title %}">{{ movie.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
 {% endblock %}

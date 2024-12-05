@@ -19,7 +19,7 @@ from django.urls import path
 
 from viewer.models import Genre, Movie
 
-from viewer.views import hello, home, movies, movies_detail
+from viewer.views import hello, home, movies, movies_detail, movies_genre
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -34,7 +34,8 @@ urlpatterns = [
     # path('hello/<param>/<param2>', hello)
 
     path('hello/', hello),
-    path('', home),
+    path('', home, name='home'),
     path('movies/', movies, name='movie-page'),
-    path('movies/<title>', movies_detail)
+    path('movies/<title>', movies_detail, name='movies-detail'),
+    path('movies/genre/<name>', movies_genre, name='movies-genre')
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

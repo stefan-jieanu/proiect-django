@@ -24,20 +24,45 @@ def home(request):
 
 def movies(request):
     movies = Movie.objects.all()
+    genres = Genre.objects.all()
 
     return render(
         request,
         template_name='movies.html',
-        context={'movies': movies}
+        context={'movies': movies, 'genres': genres}
     )
 
 def movies_detail(request, title):
     movie = Movie.objects.get(title=title)
 
+    # Get all the movies with the same genre as the one we are viewing
+    recommended_movies = Movie.objects.filter(genre=movie.genre)
+
+    # Exclude the movie we are already viewing
+    recommended_movies = recommended_movies.exclude(title=title)
+
+    # Or we can chain .filter with .exclude
+    # recommended_movies = Movie.objects.filter(genre=movie.genre).exclude(title=title)
+
     return render(
         request,
         template_name='movies_detail.html',
-        context={'movie': movie}
+        context={'movie': movie, 'recommended_movies': recommended_movies}
+    )
+
+def movies_genre(request, name):
+    # Luam un obiect Genre in functie de numele existent in link
+    genre = Genre.objects.get(name=name)
+
+    # Luam doar filmele care au acel gen
+    movies = Movie.objects.filter(genre=genre)
+
+    all_genres = Genre.objects.all()
+
+    return render(
+        request,
+        template_name='movies.html',
+        context={'movies': movies, 'genres': all_genres}
     )
 
 # def movies(request):
