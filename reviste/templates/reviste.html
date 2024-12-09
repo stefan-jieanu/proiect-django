@@ -1,0 +1,18 @@
+
+    <h2>Publicatii</h2>
+    <div></div>
+
+    <h1>Revistele mele:</h1>
+    <ul>
+      {% for r in reviste %}
+          <li>
+                {% comment %}
+                <!-- Sintaxa {% url %} folosita in template-uri de django va inlocui automat linkul cu numele path-ului -->
+                <!-- Numele fiind definit in urls.py -->
+<!--              <a href="{% url 'revista-detail' r.title %}"> {{ r.title }} </a>-->
+                {% endcomment %}
+                <p> {{ r.title }} </p>
+          </li>
+      {% endfor %}
+    </ul>
+

@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from reviste.models import Publicatie, Revista
 from viewer.models import Genre, Movie
 
 from viewer.views import hello, home, movies, movies_detail, movies_genre
@@ -24,8 +25,13 @@ from viewer.views import hello, home, movies, movies_detail, movies_genre
 from django.conf import settings
 from django.conf.urls.static import static
 
+from reviste.views import hello_reviste, reviste, reviste_detail
+
 admin.site.register(Genre)
 admin.site.register(Movie)
+
+admin.site.register(Publicatie)
+admin.site.register(Revista)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -33,9 +39,21 @@ urlpatterns = [
     # Regular expressions parameter in url
     # path('hello/<param>/<param2>', hello)
 
+    # Paths for 'viewer' app
+    # Parameters for path() function
+    # path('path/name', view_name, name='my-page')
+    # 'path/name' is the url path we want to define. It can be anything we want but should be represetative of the page
+    # view_name is the name of the view function assosiated with that path or page
+    # name='my-page' is a special name that we can use to reference this path inside the rest of our project
+
     path('hello/', hello),
     path('', home, name='home'),
     path('movies/', movies, name='movie-page'),
     path('movies/<title>', movies_detail, name='movies-detail'),
-    path('movies/genre/<name>', movies_genre, name='movies-genre')
+    path('movies/genre/<name>', movies_genre, name='movies-genre'),
+
+    # Paths for 'reviste' app
+    path('hello-reviste/', hello_reviste, name='hello-reviste'),
+    path('reviste/', reviste, name='reviste-page'),
+    path('reviste/<title>', reviste_detail, name='revista-detail'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

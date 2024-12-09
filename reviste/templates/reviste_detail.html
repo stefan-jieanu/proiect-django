@@ -1,0 +1,8 @@
+{% extends 'base-reviste.html' %}
+
+{% block content %}
+    <h1>Titlu: {{ revista.title }}</h1>
+    <p>Descriere: {{ revista.description }}</p>
+    <p>Publicatie: {{ revista.publicatie.name }}</p>
+    <p>Lansat in: {{ revista.released }}</p>
+{% endblock %}

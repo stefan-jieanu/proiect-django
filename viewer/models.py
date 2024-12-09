@@ -4,6 +4,14 @@ from django.db.models import CharField, IntegerField, DateField, TextField, Fore
 
 # Create your models here.
 class Genre(models.Model):
+
+    # class Meta este o clasa creata in interiorul modelului
+    # contine proprietati ale modelului care pot fi schimbate
+    class Meta:
+        # attributul 'verbose_name_plural' este numele care va aparea pe pagina de admin
+        # exemplu:
+        verbose_name_plural = 'Genuri de filme'
+
     # Field in modelul Genre numit 'name' care este de tip CharField (mai exact, un string)
     # max_length este un parametru care indica lungimea maxima al acestui field
     name = CharField(max_length=128)
@@ -12,6 +20,10 @@ class Genre(models.Model):
         return self.name
 
 class Movie(models.Model):
+
+    class Meta:
+        verbose_name_plural = 'Filme'
+
     title = CharField(max_length=128)
 
     # IntegerField este un field care simbolizeaza un simplu int
