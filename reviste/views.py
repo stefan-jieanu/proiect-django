@@ -12,6 +12,17 @@ def reviste(request):
     reviste = Revista.objects.all()
     publicatii = Publicatie.objects.all()
 
+    # http://127.0.0.1:8000/reviste/?sort=desc
+    # 'sort' va fi pus automat in dict-ul request.GET
+    sort = request.GET.get('sort', '')
+
+    if sort == 'asc':
+        # Order reviste by title from a - z
+        reviste = reviste.order_by('title')
+    elif sort == 'desc':
+        # Order reviste by title from z - a
+        reviste = reviste.order_by('-title')
+
     return render(
         request,
         template_name='reviste.html',
