@@ -57,3 +57,7 @@ urlpatterns = [
     path('reviste/', reviste, name='reviste-page'),
     path('reviste/<title>', reviste_detail, name='revista-detail'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+# ^ adds url for our static files to be made available to the client
+# static files are located in a directory named 'static/' in the same folder as the app
+# static files are .css/.js files
+# when making changes to .css or .js files make sure to reload the page with Ctrl+Shift+R to clear browser cache
